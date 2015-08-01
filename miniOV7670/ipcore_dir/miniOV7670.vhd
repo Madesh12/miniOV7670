@@ -123,23 +123,31 @@ architecture Structural of miniOV7670 is
 	); 
 	end component;
 
-	COMPONENT dcm24
-	PORT(
-		CLKIN_IN : IN std_logic;          
-		CLKDV_OUT : OUT std_logic;
-		CLK0_OUT : OUT std_logic
+COMPONENT clk_100Mhz_96Mhz_24Mhz
+PORT(
+		CLK_IN1 : IN std_logic;          
+		CLK_OUT1 : OUT std_logic;
+		CLK_OUT2 : OUT std_logic
 		);
 	END COMPONENT;
 
+--	COMPONENT dcm24
+--	PORT(
+--		CLKIN_IN : IN std_logic;          
+--		CLKDV_OUT : OUT std_logic;
+--		CLK0_OUT : OUT std_logic
+--		);
+--	END COMPONENT;
 
-	COMPONENT dcm96
-	PORT(
-		CLKIN_IN : IN std_logic;          
-		CLKFX_OUT : OUT std_logic;
-		CLKIN_IBUFG_OUT : OUT std_logic;
-		CLK0_OUT : OUT std_logic
-		);
-	END COMPONENT;
+
+--	COMPONENT dcm96
+--	PORT(
+--		CLKIN_IN : IN std_logic;          
+--		CLKFX_OUT : OUT std_logic;
+--		CLKIN_IBUFG_OUT : OUT std_logic;
+--		CLK0_OUT : OUT std_logic
+--		);
+--	END COMPONENT;
 	
 	component uart_tx is
     port (            data_in : in std_logic_vector(7 downto 0);
@@ -199,18 +207,30 @@ architecture Structural of miniOV7670 is
 	CAM_SIOC <= i2c_scl ;
 	CAM_SIOD <= i2c_sda ;
 
-	Inst_dcm96: dcm96 PORT MAP(
-		CLKIN_IN => clk,
-		CLKFX_OUT => clk_96, 
-		CLKIN_IBUFG_OUT => clk0
+
+Inst_clk_100Mhz_96Mhz_24Mhz: clk_100Mhz_96Mhz_24Mhz PORT MAP(
+		CLK_IN1 => clk,
+		CLK_OUT1 => clk_24, 
+		CLK_OUT2 => clk_96 		
+
+	--	CLKIN_IBUFG_OUT => clk0
 	);	
 
 
+--	Inst_dcm96: dcm96 PORT MAP(
+--		CLKIN_IN => clk,
+--		CLKFX_OUT => clk_96, 
+--		CLKIN_IBUFG_OUT => clk0
+--	);	
 
-	Inst_dcm24: dcm24 PORT MAP(
-		CLKIN_IN => clk_96,
-		CLKDV_OUT => clk_24
-	);
+
+
+--	Inst_dcm24: dcm24 PORT MAP(
+--		CLKIN_IN => clk_96,
+--		CLKDV_OUT => clk_24
+--	);
+
+	
 	
 	--signal n_clk_24: std_logic ;
 	--n_clk_24 => !clk_24;
