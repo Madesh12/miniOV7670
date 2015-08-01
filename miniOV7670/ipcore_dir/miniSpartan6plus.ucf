@@ -45,11 +45,11 @@ NET "LED<0>"					LOC = T18	| 	IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST ; 
 #                              Expansion Connector's HEADER P7 when Expansion Connector LED is OFF	                                               #
 ####################################################################################################################################################
 	
-NET TMDSp(0)    				LOC = U8   | IOSTANDARD = TMDS_33; # Blue
-NET TMDSn(0)    				LOC = V8   | IOSTANDARD = TMDS_33;
-NET TMDSp(1)    				LOC = R8   | IOSTANDARD = TMDS_33; # Green    
-NET TMDSn(1)    				LOC = T8   | IOSTANDARD = TMDS_33;
-NET TMDSp(2)    				LOC = R5   | IOSTANDARD = TMDS_33; # Red  
-NET TMDSn(2)    				LOC = T5   | IOSTANDARD = TMDS_33; 
-NET TMDSp_clock  			   LOC = T9   | IOSTANDARD = TMDS_33; # CLK
-NET TMDSn_clock  			   LOC = V9   | IOSTANDARD = TMDS_33;
+NET "TMDSp(0)"    			LOC = "U8"   | IOSTANDARD = TMDS_33 | DRIVE = 8  | SLEW = FAST; # Blue
+NET "TMDSn(0)"    			LOC = "V8"   | IOSTANDARD = TMDS_33 | DRIVE = 8  | SLEW = FAST;
+NET "TMDSp(1)"     			LOC = "R8"   | IOSTANDARD = TMDS_33 | DRIVE = 8  | SLEW = FAST; # Green    
+NET "TMDSn(1)"    			LOC = "T8"   | IOSTANDARD = TMDS_33 | DRIVE = 8  | SLEW = FAST;
+NET "TMDSp(2)"     			LOC = "R5"   | IOSTANDARD = TMDS_33 | DRIVE = 8  | SLEW = FAST; # Red  
+NET "TMDSn(2)"    			LOC = "T5"   | IOSTANDARD = TMDS_33 | DRIVE = 8  | SLEW = FAST; 
+NET "TMDSp_clock"     		LOC = "T9"   | IOSTANDARD = TMDS_33 | DRIVE = 8  | SLEW = FAST; # CLK
+NET "TMDSn_clock"    		LOC = "V9"   | IOSTANDARD = TMDS_33 | DRIVE = 8  | SLEW = FAST;
